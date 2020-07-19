@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="MVW_ControlsAndFormsLibrary.UserControls.CommonUserControls.AddEditSmartWall_UserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MVW_ControlsAndFormsLibrary.UserControls.CommonUserControls"
+             xmlns:converters="clr-namespace:MVW_ClassLibrary.Common.Converters;assembly=MVW_ClassLibrary"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="450">
+
+    <UserControl.Resources>
+        <converters:MultiLanguageNameKey2String_WpfConverter x:Key="multilanguage_converter"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" Header="{Binding MultiLanguageImp, Converter={StaticResource multilanguage_converter},ConverterParameter=smartwallSettings_smartwallInformation_text}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Margin="2" Content="{Binding MultiLanguageImp, Converter={StaticResource multilanguage_converter},ConverterParameter=general_name}"/>
+                <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="textBox_Name" Text="{Binding tmpName, Mode=TwoWay, IsAsync=True}" Margin="2,0,2,15" />
+                <Label Grid.Row="2" Grid.Column="0" Margin="2" Content="{Binding MultiLanguageImp, Converter={StaticResource multilanguage_converter},ConverterParameter=general_description}"/>
+                <TextBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="textBox_Description" Text="{Binding tmpDescription, IsAsync=True}" Margin="2,0,2,15"/>
+            </Grid>
+
+        </GroupBox>
+    </Grid>
+</UserControl>

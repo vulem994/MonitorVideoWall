@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="MVW_ControlsAndFormsLibrary.UserControls.CommonUserControls.AddEditMonitor_UserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MVW_ControlsAndFormsLibrary.UserControls.CommonUserControls"
+             xmlns:converters="clr-namespace:MVW_ClassLibrary.Common.Converters;assembly=MVW_ClassLibrary"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="450">
+    <UserControl.Resources>
+        <converters:MultiLanguageNameKey2String_WpfConverter x:Key="multilanguage_converter"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" Header="{Binding MultiLanguageImp, Converter={StaticResource multilanguage_converter},ConverterParameter=monitorSettings_dimensions_text}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Margin="2" Content="{Binding MultiLanguageImp, Converter={StaticResource multilanguage_converter},ConverterParameter=general_name}"/>
+                <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="textBox_Name" Text="{Binding tmpName}" Margin="2,0,2,5"/>
+                <Label Grid.Row="2" Grid.Column="0" Margin="2" Content="{Binding MultiLanguageImp, Converter={StaticResource multilanguage_converter},ConverterParameter=general_IpAdress}"/>
+                <TextBox Grid.Row="3" Grid.Column="0" x:Name="textBox_IpAdress" Text="{Binding tmpIPAdress}" Margin="2,0,2,5"/>
+                <Label Grid.Row="4" Grid.Column="0" Margin="2" Content="{Binding MultiLanguageImp, Converter={StaticResource multilanguage_converter},ConverterParameter=general_username}"/>
+                <Label Grid.Row="4" Grid.Column="1" Margin="2" Content="{Binding MultiLanguageImp, Converter={StaticResource multilanguage_converter},ConverterParameter=general_password}"/>
+                <TextBox Grid.Row="5" Grid.Column="0" x:Name="textBox_Username" Text="{Binding tmpUserName}"  Margin="2,0,2,5"/>
+                <TextBox Grid.Row="5" Grid.Column="1" x:Name="textBox_Password" Text="{Binding tmpPassword}" Margin="2,0,2,5"/>
+                <Label Grid.Row="6" Grid.Column="0" Margin="2" Content="{Binding MultiLanguageImp, Converter={StaticResource multilanguage_converter},ConverterParameter=general_HTTPprotocol}"/>
+                <TextBox Grid.Row="7" Grid.Column="0" x:Name="textBox_httpPort" Text="{Binding tmpHTTPPort}" Margin="2,0,2,5"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="{Binding MultiLanguageImp, Converter={StaticResource multilanguage_converter},ConverterParameter=monitorSettings_monitorInformation_text}" Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Grid.Row="0" Margin="2" VerticalAlignment="Center" Content="{Binding MultiLanguageImp, Converter={StaticResource multilanguage_converter},ConverterParameter=general_size}"/>
+                <ComboBox IsTextSearchEnabled="True" Visibility="Visible" Grid.Column="1" Grid.Row="0" Margin="2,2,2,0"
+                              x:Name="comboBox_SelectedMonitorSize" VerticalContentAlignment="Center"     
+                              ItemsSource="{Binding AllInchesSizeList}"
+                              SelectedItem="{Binding tmpDiagonalSizeInches}"  />
+                <Label Grid.Column="2" Grid.Row="0" Margin="2" >inches</Label>
+
+                <Label Grid.Column="0" Grid.Row="2" Margin="2" VerticalAlignment="Center" Content="{Binding MultiLanguageImp, Converter={StaticResource multilanguage_converter},ConverterParameter=general_aspectRatio}"/>
+                <ComboBox Grid.Column="1" Grid.Row="2" Margin="2"
+                              x:Name="combobox_selectedMonitorAspectRatio"
+                              ItemsSource="{Binding AllAspectRatioModelsList}"
+                              DisplayMemberPath="Title" VerticalContentAlignment="Center"
+                              SelectedItem="{Binding tmpAspectRatio}"/>
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+</UserControl>

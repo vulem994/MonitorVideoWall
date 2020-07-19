@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4BAB4598-1DDF-4778-AA67-C64AD94798D0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MVW_ClassLibrary</RootNamespace>
+    <AssemblyName>MVW_ClassLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="VideoOS.Platform">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Milestone\MIPSDK\Bin\VideoOS.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\Adorners\MonitorRectangleName_Adorner.cs" />
+    <Compile Include="Common\Converters\Bitmap2BitmapImage_WpfConverter.cs" />
+    <Compile Include="Common\Converters\ClassInstanceType2BitmapImage_WpfConverter.cs" />
+    <Compile Include="Common\Converters\LeftShiftDown2ObjectColor.cs" />
+    <Compile Include="Common\Converters\MultiLanguageNameKey2String_WpfConverter.cs" />
+    <Compile Include="Common\Converters\SelectedMonitorRectangle2Visibility_WpfConverter.cs" />
+    <Compile Include="Common\Converters\SelectedTreeviewObject2UserControlVisibility_WpfConverter.cs" />
+    <Compile Include="Common\Converters\SharedConverters.cs" />
+    <Compile Include="Common\DrawModels\MonitorRectangle.cs" />
+    <Compile Include="Common\DtoModels\CommonModels\ALogicalChildrenClass.cs" />
+    <Compile Include="Common\DtoModels\CommonModels\LogicalChildrenClassInstance.cs" />
+    <Compile Include="Common\DtoModels\DtoCamera.cs" />
+    <Compile Include="Common\DtoModels\DtoMainConfiguration.cs" />
+    <Compile Include="Common\DtoModels\DtoMonitor.cs" />
+    <Compile Include="Common\DtoModels\DtoPreset.cs" />
+    <Compile Include="Common\DtoModels\DtoPresetSettings.cs" />
+    <Compile Include="Common\DtoModels\DtoSmartWall.cs" />
+    <Compile Include="Common\DtoModels\HelperModels\AspectRatioModel.cs" />
+    <Compile Include="Common\Enumerations\EMVWActions.cs" />
+    <Compile Include="Common\Enumerations\ELogicalChildrenClassInstanceType.cs" />
+    <Compile Include="Common\Enumerations\EMonitorAspectRatioType.cs" />
+    <Compile Include="Common\Enumerations\EMoveRectangleDirection.cs" />
+    <Compile Include="Common\EventHandlers\MVW_UserActionEventArgument.cs" />
+    <Compile Include="Common\Shared\Calculations.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common\Helpers\" />
+    <Folder Include="Resources\LanguageResources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Icons\add_layout_b.png" />
+    <Content Include="Resources\Icons\add_monitor_b.png" />
+    <Content Include="Resources\Icons\add_presets_b.png" />
+    <Content Include="Resources\Icons\add_screenwall_b.png" />
+    <Content Include="Resources\Icons\camera.png" />
+    <Content Include="Resources\Icons\cameraVoyager.png" />
+    <Content Include="Resources\Icons\enter.png" />
+    <Content Include="Resources\Icons\enterVoyager.png" />
+    <Content Include="Resources\Icons\exit.png" />
+    <Content Include="Resources\Icons\exitVoyager.png" />
+    <Content Include="Resources\Icons\folder.png" />
+    <Content Include="Resources\Icons\folderVoyager.png" />
+    <Content Include="Resources\Icons\SmartWallLayout.png" />
+    <Content Include="Resources\Icons\SmartWallMonitor.png" />
+    <Content Include="Resources\Icons\SmartWallPreset.png" />
+    <Content Include="Resources\Icons\SmartWallScreenWall.png" />
+    <Content Include="Resources\Icons\settings.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\switchVoyager.png" />
+    <Content Include="Resources\Icons\trash_layout_b.png" />
+    <Content Include="Resources\Icons\trash_monitor_b.png" />
+    <Content Include="Resources\Icons\trash_presets_b.png" />
+    <Content Include="Resources\Icons\trash_screenwall_b.png" />
+    <Content Include="Resources\OtherImages\monitorTabSettingsPresetShow.png" />
+    <Content Include="Resources\OtherImages\inClientShow.png" />
+    <Content Include="Resources\SmartWallIcons\add_layout.png" />
+    <Content Include="Resources\SmartWallIcons\add_monitor.png" />
+    <Content Include="Resources\SmartWallIcons\add_presets.png" />
+    <Content Include="Resources\SmartWallIcons\add_screenwall.png" />
+    <Content Include="Resources\SmartWallIcons\layout.png" />
+    <Content Include="Resources\SmartWallIcons\monitor.png" />
+    <Content Include="Resources\SmartWallIcons\multiple_layout.png" />
+    <Content Include="Resources\SmartWallIcons\multiple_monitor.png" />
+    <Content Include="Resources\SmartWallIcons\multiple_presets.png" />
+    <Content Include="Resources\SmartWallIcons\multiple_screenwall.png" />
+    <Content Include="Resources\SmartWallIcons\presets.png" />
+    <Content Include="Resources\SmartWallIcons\screenwall.png" />
+    <Content Include="Resources\SmartWallIcons\trash_layout.png" />
+    <Content Include="Resources\SmartWallIcons\trash_monitor.png" />
+    <Content Include="Resources\SmartWallIcons\trash_presets.png" />
+    <Content Include="Resources\SmartWallIcons\trash_screenwall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MVW_MultiLanguageImplementation\MVW_MultiLanguageImplementation.csproj">
+      <Project>{1594b5ab-0096-438c-911c-3bbaae330b2e}</Project>
+      <Name>MVW_MultiLanguageImplementation</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,125 @@
+﻿<UserControl x:Class="MVW_ControlsAndFormsLibrary.UserControls.MonitorPositionOrganisation_UserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converters="clr-namespace:MVW_ClassLibrary.Common.Converters;assembly=MVW_ClassLibrary"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Keyboard.KeyDown="UserControl_KeyDown" Keyboard.KeyUp="UserControl_KeyUp">
+
+    <UserControl.Resources>
+
+        <converters:SelectedMonitorRectangle2Visibility_WpfConverter x:Key="selectedMonitor2visibility_converter"></converters:SelectedMonitorRectangle2Visibility_WpfConverter>
+        <converters:LeftShiftDown2ObjectColor x:Key="leftShiftDown2Color_converter"></converters:LeftShiftDown2ObjectColor>
+        <converters:MultiLanguageNameKey2String_WpfConverter x:Key="multilanguage_converter"/>
+    </UserControl.Resources>
+
+    <Grid x:Name="grid_Main">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+        <AdornerDecorator ClipToBounds="True" Grid.Column="0">
+            <Canvas x:Name="canvas_Main" Background="CadetBlue">
+
+            </Canvas>
+        </AdornerDecorator>
+
+        <Grid x:Name="grid_options" Grid.Column="1" Background="white">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <GroupBox x:Name="groupBox_Movement"
+                      Header="{Binding MultiLanguageImp, Converter={StaticResource multilanguage_converter}, ConverterParameter=monitorPosition_movement_text}" Grid.Row="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid x:Name="grid_movement" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" MinWidth="30"/>
+                            <ColumnDefinition Width="*" MinWidth="30"/>
+                            <ColumnDefinition Width="*" MinWidth="30"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" MinHeight="30"/>
+                            <RowDefinition Height="*" MinHeight="30"/>
+                            <RowDefinition Height="*" MinHeight="30"/>
+                            <RowDefinition Height="*" MinHeight="25"/>
+                            <RowDefinition Height="*" MinHeight="30"/>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="button_topLeft" Margin="2" Click="button_topLeft_Click"
+                            Grid.Column="0" Grid.Row="0" Content="⬉"/>
+                        <Button x:Name="button_topCenter" Margin="2" Click="button_topCenter_Click"
+                            Grid.Column="1" Grid.Row="0" Content="⬆"/>
+                        <Button x:Name="button_topRight" Margin="2" Click="button_topRight_Click"
+                            Grid.Column="2" Grid.Row="0" Content="⬈"/>
+                        <Button x:Name="button_midLeft" Margin="2" Click="button_midLeft_Click"
+                            Grid.Column="0" Grid.Row="1" Content="⬅" />
+                        <Button x:Name="button_midRight" Margin="2" Click="button_midRight_Click"
+                            Grid.Column="2" Grid.Row="1" Content="➞"/>
+                        <Button x:Name="button_bottomLeft" Margin="2" Click="button_bottomLeft_Click"
+                            Grid.Column="0" Grid.Row="2" Content="⬋"/>
+                        <Button x:Name="button_bottomCenter" Margin="2" Click="button_bottomCenter_Click"
+                            Grid.Column="1" Grid.Row="2" Content="⬇"/>
+                        <Button x:Name="button_bottomRight" Margin="2" Click="button_bottomRight_Click"
+                            Grid.Column="2" Grid.Row="2" Content="⬊"/>
+
+                        <Button x:Name="button_IncreaseInchesRatio" Margin="2" Click="button_IncreaseInchesRatio_Click"
+                            Grid.Column="0" Grid.Row="4" MinWidth="20" MinHeight="20" Content="+" />
+                        <Button x:Name="button_DecreaseInchesRatio" Margin="2" Click="button_DecreaseInchesRatio_Click"
+                            Grid.Column="2" Grid.Row="4" MinWidth="20" MinHeight="20" Content="-" />
+                    </Grid>
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="1" ToolTip="Hold Left Shift to disable auto aligment">
+                        <Label VerticalAlignment="Center" Content="{Binding MultiLanguageImp, Converter={StaticResource multilanguage_converter}, ConverterParameter=monitorPosition_autoAligment_text}"/>
+                        <Ellipse  Fill="{Binding lShiftDown, Converter={StaticResource leftShiftDown2Color_converter}}" Width="10" Height="10" Margin="2" VerticalAlignment="Center"></Ellipse>
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+
+            <GroupBox x:Name="groupBox_monitorInformation" Visibility="{Binding SelectedMonitorRectangle, Converter={StaticResource selectedMonitor2visibility_converter}}"
+                      Header="{Binding MultiLanguageImp, Converter={StaticResource multilanguage_converter}, ConverterParameter=monitorSettings_monitorInformation_text}" Grid.Row="1">
+                <Grid x:Name="grid_MinitorInfos">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="74*"/>
+                        <ColumnDefinition Width="85*"/>
+                        <ColumnDefinition Width="85*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Grid.Row="0" Margin="2" Grid.ColumnSpan="2" Content="{Binding MultiLanguageImp, Converter={StaticResource multilanguage_converter}, ConverterParameter=general_name}"/>
+                    <TextBox Grid.Column="1" Grid.Row="0" x:Name="textBox_selectedMonitorName"
+                             Margin="2" IsEnabled="False" Grid.ColumnSpan="2"
+                             VerticalContentAlignment="Center"
+                             Text="{Binding SelectedMonitorRectangle.ConnectedMonitor.Name}"/>
+                    <Label Grid.Column="0" Grid.Row="1" Margin="2" Grid.ColumnSpan="2" Content="{Binding MultiLanguageImp, Converter={StaticResource multilanguage_converter}, ConverterParameter=general_size}"/>
+                    <ComboBox IsTextSearchEnabled="True" Visibility="Visible" Grid.Column="1" Grid.Row="1" Margin="2,2,2,0"
+                              x:Name="comboBox_SelectedMonitorSize" VerticalContentAlignment="Center"
+                              ItemsSource="{Binding AllInchesSizeList}"
+                              SelectedItem="{Binding SelectedMonitorRectangle.ConnectedMonitor.InchesDiagonalSize}" Height="26" VerticalAlignment="Top"/>
+                    <TextBox Visibility="Collapsed" Grid.Column="1" Grid.Row="1" Margin="2"
+                             x:Name="textBox_Inches" VerticalContentAlignment="Center"
+                             Text="{Binding SelectedMonitorRectangle.ConnectedMonitor.InchesDiagonalSize}"></TextBox>
+                    <Label Grid.Column="2" Grid.Row="1" Margin="2">inches</Label>
+                    <Label Grid.Column="0" Grid.Row="2" Margin="2" Grid.ColumnSpan="2" Content="{Binding MultiLanguageImp, Converter={StaticResource multilanguage_converter}, ConverterParameter=general_aspectRatio}"/>
+                    <ComboBox Grid.Column="1" Grid.Row="2" Margin="2"
+                              x:Name="combobox_selectedMonitorAspectRatio"
+                              ItemsSource="{Binding AllAspectRatioModelsList}"
+                              DisplayMemberPath="Title" VerticalContentAlignment="Center"
+                              SelectedItem="{Binding SelectedMonitorRectangle.ConnectedMonitor.AspectRatio}"/>
+                    <Button x:Name="button_deselectClick" Margin="2" Click="button_deselectClick_Click" Grid.Column="2" Grid.Row="3" Content="{Binding MultiLanguageImp, Converter={StaticResource multilanguage_converter}, ConverterParameter=general_deselect}"/>
+                </Grid>
+            </GroupBox>
+        </Grid>
+    </Grid>
+
+</UserControl>
