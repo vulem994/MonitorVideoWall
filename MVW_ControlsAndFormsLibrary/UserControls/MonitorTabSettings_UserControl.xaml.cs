@@ -62,6 +62,7 @@ namespace MVW_ControlsAndFormsLibrary.UserControls
             this.DataContext = this;
             InitializeComponent();
             InitializeControl();
+
         }
 
         //Initialize
